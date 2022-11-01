@@ -13,5 +13,10 @@ async function loadWeather(searchTerm){
     return [city, country, forecastDescription, temperature, humidity, pressure]
   }
 
-  let forecast = loadWeather("Warsaw")
-  console.log(forecast)
+  const userInput = document.querySelector("#search")
+
+  form.onsubmit = function() {
+    let forecast = loadWeather(userInput.value)
+    console.log(forecast)
+    return false
+  }
