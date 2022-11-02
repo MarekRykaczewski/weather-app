@@ -4,6 +4,9 @@ body {
     width: 100vw;
     align-items: center;
     justify-content: center;
+    background-image: url(./sunny.jpg);
+    background-position: center;
+    background-size: cover;
 }
 
 #main {
@@ -13,10 +16,15 @@ body {
 }
 
 #forecast {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 2;
+    grid-template-rows: 4;
     padding: 10px;
-    gap: 5px;
+    gap: 10px;
+    align-items: center;
+    justify-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
     /* From https://css.glass */
     background: rgba(255, 255, 255, 0.2);
     border-radius: 16px;
@@ -27,3 +35,22 @@ body {
 
 }
 
+#date {
+    grid-column: 1;
+}
+
+#description {
+    grid-column: 1;
+    font-size: 2rem; 
+}
+
+#location {
+    grid-column: 1;
+    font-size: 4rem;
+}
+
+#temperature {
+    grid-column: 2;
+    grid-row: 1 / 4;
+    font-size: 8rem;
+}
