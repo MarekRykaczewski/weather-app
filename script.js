@@ -19,7 +19,7 @@ async function renderWeather(weatherData) {
     cityText.innerHTML = response[0]
     descriptionText.innerHTML = response[2]
     dateText.innerHTML = new Date()
-    temperatureText.innerHTML = response[3]
+    temperatureText.innerHTML = response[3] - 273.15 // Convert from Kelvin to Celsius
 }
 
 form.onsubmit = function() {
