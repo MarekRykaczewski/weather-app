@@ -1,6 +1,5 @@
 const key = "7d3c336ea0f76d099742f9efdbd1654d"
 
-
 async function loadWeather(searchTerm){
     const response = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${searchTerm}&appid=${key}`, {mode: 'cors'})
     const weatherData = await response.json()
@@ -13,10 +12,21 @@ async function loadWeather(searchTerm){
     return [city, country, forecastDescription, temperature, humidity, pressure]
   }
 
-  const userInput = document.querySelector("#search")
+async function renderWeather(weatherData) {
+    const response = await weatherData
+    descriptionText.innerHTML = response[2]
+    dateText.innerHTML = new Date()
+    temperatureText.innerHTML = response[3]
+}
 
-  form.onsubmit = function() {
+form.onsubmit = function() {
     let forecast = loadWeather(userInput.value)
-    console.log(forecast)
+    renderWeather(forecast)
     return false
-  }
+}
+
+const userInput = document.querySelector("#search")
+const descriptionText = document.querySelector("#description")
+const dateText = document.querySelector("#date")
+const temperatureText = document.querySelector("#temperature")
+
