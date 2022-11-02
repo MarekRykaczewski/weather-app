@@ -10,7 +10,8 @@ async function loadWeather(searchTerm){
     const temperature = weatherData.list[0].main.temp // e.g. 285 (Kelvin) 
     const humidity = weatherData.list[0].main.humidity // e.g. 95
     const pressure = weatherData.list[0].main.pressure // e.g. 1017
-    return [city, country, forecastDescription, temperature, humidity, pressure]
+    const date = weatherData.list[0].dt_txt // e.g. 02/11/2022 18:00
+    return [city, country, forecastDescription, temperature, humidity, pressure, date]
   }
 
 async function renderWeather(weatherData) {
@@ -18,7 +19,7 @@ async function renderWeather(weatherData) {
 
     locationText.innerHTML = response[0] + ", " + response[1]
     descriptionText.innerHTML = response[2]
-    dateText.innerHTML = new Date().toLocaleString('en-GB');
+    dateText.innerHTML = response[6];
     temperatureText.innerHTML = Math.round((response[3] - 273.15) / 0.5) * 0.5 + "°C" // Convert from Kelvin to Celsius (round to nearest 0.5)
 }
 
