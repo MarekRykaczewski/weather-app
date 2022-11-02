@@ -14,6 +14,9 @@ async function loadWeather(searchTerm){
 
 async function renderWeather(weatherData) {
     const response = await weatherData
+
+    countryText.innerHTML = response[1]
+    cityText.innerHTML = response[0]
     descriptionText.innerHTML = response[2]
     dateText.innerHTML = new Date()
     temperatureText.innerHTML = response[3]
@@ -26,6 +29,8 @@ form.onsubmit = function() {
 }
 
 const userInput = document.querySelector("#search")
+const cityText = document.querySelector("#city")
+const countryText = document.querySelector("#country")
 const descriptionText = document.querySelector("#description")
 const dateText = document.querySelector("#date")
 const temperatureText = document.querySelector("#temperature")
