@@ -15,8 +15,7 @@ async function loadWeather(searchTerm){
 async function renderWeather(weatherData) {
     const response = await weatherData
 
-    countryText.innerHTML = response[1]
-    cityText.innerHTML = response[0]
+    locationText.innerHTML = response[0] + ", " + response[1]
     descriptionText.innerHTML = response[2]
     dateText.innerHTML = new Date()
     temperatureText.innerHTML = Math.round((response[3] - 273.15) / 0.5) * 0.5 + " °C" // Convert from Kelvin to Celsius (round to nearest 0.5)
@@ -29,8 +28,7 @@ form.onsubmit = function() {
 }
 
 const userInput = document.querySelector("#search")
-const cityText = document.querySelector("#city")
-const countryText = document.querySelector("#country")
+const locationText = document.querySelector("#location")
 const descriptionText = document.querySelector("#description")
 const dateText = document.querySelector("#date")
 const temperatureText = document.querySelector("#temperature")
